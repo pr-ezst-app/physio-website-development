@@ -4,19 +4,19 @@ import Icon from "@/components/ui/icon";
 const HERO_IMG = "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/9c577e6b-99db-45d8-9e36-ae65274024a5.jpg";
 
 const SERVICES = [
-  { icon: "Stethoscope", title: "General Practice", desc: "Primary care, diagnostics, and treatment of acute and chronic conditions.", price: "from $50" },
-  { icon: "Heart", title: "Cardiology", desc: "ECG, heart ultrasound, consultations and management of cardiovascular disease.", price: "from $80" },
-  { icon: "Eye", title: "Ophthalmology", desc: "Vision checks, glasses fitting, and treatment of eye conditions.", price: "from $60" },
-  { icon: "Brain", title: "Neurology", desc: "Diagnosis and treatment of headaches, spine conditions, and sleep disorders.", price: "from $70" },
-  { icon: "Microscope", title: "Lab Diagnostics", desc: "Blood, urine, biochemistry and hormone tests — results same day.", price: "from $15" },
-  { icon: "Scan", title: "Ultrasound", desc: "Abdominal, thyroid, and pelvic ultrasound imaging.", price: "from $40" },
+  { icon: "Stethoscope", title: "General Practice", desc: "Primary care, diagnostics, and treatment of acute and chronic conditions.", price: "from $50", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/1c69cddf-50e1-4aaa-b88c-901d6b6badd2.jpg" },
+  { icon: "Heart", title: "Cardiology", desc: "ECG, heart ultrasound, consultations and management of cardiovascular disease.", price: "from $80", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/a7e065ee-302d-4098-acb4-660f003989cf.jpg" },
+  { icon: "Eye", title: "Ophthalmology", desc: "Vision checks, glasses fitting, and treatment of eye conditions.", price: "from $60", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/1c69cddf-50e1-4aaa-b88c-901d6b6badd2.jpg" },
+  { icon: "Brain", title: "Neurology", desc: "Diagnosis and treatment of headaches, spine conditions, and sleep disorders.", price: "from $70", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/a7e065ee-302d-4098-acb4-660f003989cf.jpg" },
+  { icon: "Microscope", title: "Lab Diagnostics", desc: "Blood, urine, biochemistry and hormone tests — results same day.", price: "from $15", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/6c65afc5-cb79-474f-9b0b-f3c03ba0fca4.jpg" },
+  { icon: "Scan", title: "Ultrasound", desc: "Abdominal, thyroid, and pelvic ultrasound imaging.", price: "from $40", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/6c65afc5-cb79-474f-9b0b-f3c03ba0fca4.jpg" },
 ];
 
 const DOCTORS = [
-  { name: "Alexandra Morrison", spec: "Chief Physician, GP", exp: "18 years of experience", initials: "AM" },
-  { name: "Daniel Scott", spec: "Cardiologist", exp: "12 years of experience", initials: "DS" },
-  { name: "Elena Vasquez", spec: "Neurologist", exp: "15 years of experience", initials: "EV" },
-  { name: "Michael Zane", spec: "Ophthalmologist", exp: "10 years of experience", initials: "MZ" },
+  { name: "Alexandra Morrison", spec: "Chief Physician, GP", exp: "18 years of experience", initials: "AM", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/62eedd4d-6509-4625-a4b1-3a31589688b9.jpg" },
+  { name: "Daniel Scott", spec: "Cardiologist", exp: "12 years of experience", initials: "DS", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/cae8fbbe-00a8-4f78-bbe7-fe18c3fa9992.jpg" },
+  { name: "Elena Vasquez", spec: "Neurologist", exp: "15 years of experience", initials: "EV", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/27b145b5-a0b2-4a7b-9583-c84c18acfec7.jpg" },
+  { name: "Michael Zane", spec: "Ophthalmologist", exp: "10 years of experience", initials: "MZ", img: "https://cdn.ezst.app/projects/b22d383e-0b3f-4b16-87ef-9310e64c2076/files/cc947e26-fd5e-46f9-9ea7-c6bbfa586f89.jpg" },
 ];
 
 const TESTIMONIALS = [
@@ -162,13 +162,19 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((s, i) => (
-              <div key={i} className="service-card bg-[hsl(var(--warm-white))] border border-[hsl(var(--border))] rounded-2xl p-7 group">
-                <div className="w-12 h-12 rounded-xl bg-[hsl(215,50%,20%,0.07)] flex items-center justify-center mb-5 group-hover:bg-[hsl(var(--teal))] transition-colors">
-                  <Icon name={s.icon} size={22} className="text-[hsl(var(--primary))] group-hover:text-white transition-colors" fallback="Activity" />
+              <div key={i} className="service-card bg-[hsl(var(--warm-white))] border border-[hsl(var(--border))] rounded-2xl overflow-hidden group">
+                <div className="h-44 overflow-hidden relative">
+                  <img src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  <div className="absolute bottom-3 left-3 w-9 h-9 rounded-lg bg-white/90 flex items-center justify-center">
+                    <Icon name={s.icon} size={18} className="text-[hsl(var(--primary))]" fallback="Activity" />
+                  </div>
                 </div>
-                <h3 className="font-display text-xl font-semibold text-[hsl(var(--primary))] mb-2">{s.title}</h3>
-                <p className="font-body text-sm text-[hsl(var(--muted-foreground))] leading-relaxed mb-4">{s.desc}</p>
-                <div className="font-body text-sm font-medium text-[hsl(var(--teal))]">{s.price}</div>
+                <div className="p-6">
+                  <h3 className="font-display text-xl font-semibold text-[hsl(var(--primary))] mb-2">{s.title}</h3>
+                  <p className="font-body text-sm text-[hsl(var(--muted-foreground))] leading-relaxed mb-4">{s.desc}</p>
+                  <div className="font-body text-sm font-medium text-[hsl(var(--teal))]">{s.price}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -215,16 +221,18 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {DOCTORS.map((d, i) => (
-              <div key={i} className="service-card bg-[hsl(var(--warm-white))] border border-[hsl(var(--border))] rounded-2xl p-6 text-center group">
-                <div className="w-20 h-20 rounded-full bg-[hsl(var(--primary))] flex items-center justify-center mx-auto mb-4 group-hover:bg-[hsl(var(--teal))] transition-colors">
-                  <span className="font-display text-xl font-semibold text-white">{d.initials}</span>
+              <div key={i} className="service-card bg-[hsl(var(--warm-white))] border border-[hsl(var(--border))] rounded-2xl overflow-hidden group text-center">
+                <div className="h-56 overflow-hidden">
+                  <img src={d.img} alt={d.name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-[hsl(var(--primary))] mb-1">{d.name}</h3>
-                <p className="font-body text-xs text-[hsl(var(--teal))] mb-2">{d.spec}</p>
-                <p className="font-body text-xs text-[hsl(var(--muted-foreground))]">{d.exp}</p>
-                <a href="#booking" className="mt-4 inline-block font-body text-xs font-medium text-[hsl(var(--primary))] border border-[hsl(var(--primary))] px-4 py-1.5 rounded-full hover:bg-[hsl(var(--primary))] hover:text-white transition-all">
-                  Book Appointment
-                </a>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-semibold text-[hsl(var(--primary))] mb-1">{d.name}</h3>
+                  <p className="font-body text-xs text-[hsl(var(--teal))] mb-2">{d.spec}</p>
+                  <p className="font-body text-xs text-[hsl(var(--muted-foreground))] mb-4">{d.exp}</p>
+                  <a href="#booking" className="inline-block font-body text-xs font-medium text-[hsl(var(--primary))] border border-[hsl(var(--primary))] px-4 py-1.5 rounded-full hover:bg-[hsl(var(--primary))] hover:text-white transition-all">
+                    Book Appointment
+                  </a>
+                </div>
               </div>
             ))}
           </div>
